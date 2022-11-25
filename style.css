@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
+
+:root {
+  --dark-grey: #121214;
+  --white-deep: #FFFDFA;
+  --font-color: #04D361;
+  --font-shadow: #04D361;
+  --violet: #8056E2;
+}
+
+body {
+  background-color: var(--dark-grey);
+}
+
+.btn-opts{
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  justify-content: center;
+
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+.btn-opt {
+  margin: 0 5px;
+
+  color: var(--white-deep);
+  background-color: transparent;
+
+  border-right: 1px solid var(--violet);
+  border-left: 1px solid var(--violet);
+
+  font-size: 14px;
+  font-weight: bolder;
+  
+  text-transform: uppercase;
+
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btn-opt:hover {
+
+  color: var(--white-deep);
+  background-color: transparent;
+
+  border-top: 1px solid var(--violet);
+  border-bottom: 1px solid var(--violet);
+  border-radius: 5px;
+
+  font-size: 14px;
+  font-weight: bolder;
+  
+  text-transform: uppercase;
+
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btn-opt:active {
+    
+  color: var(--white-deep);
+  background-color: var(--violet);
+
+  border-radius: 5px;
+
+  font-size: 14px;
+  font-weight: bolder;
+  
+  text-transform: uppercase;
+
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+
+main {
+  
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.counter-container {
+  color: var(--white-deep);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+.counter {
+  height: 100px;
+  width: 400px;
+  margin-bottom: 60px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.clock {
+  font-family: 'Iceland', cursive;
+  font-size: 140px;
+  color: var(--font-color);
+  /* text-shadow: 1px 1px 12px var(--font-shadow); */
+}
+
+.btn-start-container {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.btn-start{
+  width: 200px;
+  height: 50px;
+  
+  color: var(--white-deep);
+  background-color: transparent;
+
+  border: 1px solid var(--violet);
+  border-radius: 5px;
+
+  font-size: 28px;
+  font-weight: bolder;
+  
+  text-transform: uppercase;
+
+  transition: 0.3s;
+  cursor: pointer;
+
+}
+
+.btn-start:hover {
+  width: 200px;
+  height: 50px;
+  
+  color: var(--white-deep);
+  background-color: var(--violet);
+
+  border-radius: 5px;
+
+  font-size: 28px;
+  font-weight: bolder;
+  
+  text-transform: uppercase;
+
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btn-pause {
+  width: 100px;
+  height: 40px;
+  
+  color:  var(--violet);
+  background-color: transparent;
+
+  /* border-left: 1px solid var(--violet);
+  border-right: 1px solid var(--violet); */
+
+  font-size: 18px;
+  font-weight: bolder;
+  
+  text-transform: uppercase;
+
+  transition: 0.8s;
+  cursor: pointer;
+
+}
+
+.btn-pause:hover {
+  width: 100px;
+  height: 40px;
+  
+  color: var(--font-color);
+
+
+  border-radius: 5px;
+
+  font-size: 18px;
+  font-weight: bolder;
+  
+  text-transform: uppercase;
+
+  transition: 0.8s;
+  cursor: pointer;
+}
+
+.btn-pause:active {
+    border: 1px solid var(--violet);
+    transition: .2s;
+}
+
+.btn-restart{
+  width: 80px;
+  height: 100%;
+
+  background-color: transparent;
+  cursor: pointer;
+
+}
+
+.btn-restart > svg {
+  fill: var(--violet);
+  transition: 0.8s;
+}
+
+.btn-restart > svg:hover {
+  fill: var(--font-color);
+  transition: 0.8s;
+}
