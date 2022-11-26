@@ -166,7 +166,7 @@ main {
   
   color:  var(--violet);
   background-color: transparent;
-
+  border: none;
   /* border-left: 1px solid var(--violet);
   border-right: 1px solid var(--violet); */
 
@@ -186,7 +186,7 @@ main {
   
   color: var(--font-color);
 
-
+  border: none;
   border-radius: 5px;
 
   font-size: 18px;
@@ -206,7 +206,7 @@ main {
 .btn-restart{
   width: 80px;
   height: 100%;
-
+  border: none;
   background-color: transparent;
   cursor: pointer;
 
