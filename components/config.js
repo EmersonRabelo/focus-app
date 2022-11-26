@@ -1,6 +1,6 @@
 export function config (){
     
-    localStorage.setItem('pomo', '25:00');
+    localStorage.setItem('pomo', '01:00');
     localStorage.setItem('short', '05:00');
     localStorage.setItem('long', '10:00');
     localStorage.setItem('isRunning', 0);
