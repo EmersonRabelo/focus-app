@@ -31,6 +31,9 @@ body {
 
   border-right: 1px solid var(--violet);
   border-left: 1px solid var(--violet);
+  
+  border-bottom: none;
+  border-top: none;
 
   font-size: 14px;
   font-weight: bolder;
