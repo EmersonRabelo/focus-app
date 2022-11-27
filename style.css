@@ -201,10 +201,10 @@ main {
   /* cursor: pointer; */
 }
 
-.btn-pause:active {
+/* .btn-pause:active {
     border: 1px solid var(--violet);
     transition: .2s;
-}
+} */
 
 .btn-restart{
   width: 80px;
