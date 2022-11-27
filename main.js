@@ -5,7 +5,7 @@ import { pomoTimer, stop }  from '/components/pomo-counter-component/timer.js'
 
 import { config } from '/components/config.js'
 
-// core application function
+// core application
 (()=>{
 
     const {traitsPomo} = config(),
@@ -14,6 +14,7 @@ import { config } from '/components/config.js'
     
     const counterContainer = document.getElementById('counter-container');
     const btnStartCounter = document.getElementById('btn-start');
+    const btnRestartCounter = document.getElementById('btn-restart');
 
     const btnPomo = document.getElementById('btn-pomo');
     const btnShort = document.getElementById('btn-short');
@@ -22,64 +23,89 @@ import { config } from '/components/config.js'
 
 
     window.onload = () => {
-        let template = pomoTemplate(pomoCounter ?? traitsPomo);
-        counterContainer.innerHTML = template.template;
-        
-        window.setInterval(()=>{
-            const pomoCounter = localStorage.getItem('pomoCounter'),
-                pomo = localStorage.getItem('pomo'),
-                    isRunning = localStorage.getItem('isRunning'),
-                        isPaused= localStorage.getItem('isPaused');
 
-            if (pomoCounter < pomo ){
-                if (isRunning == 1 & isPaused ==-0){
-                    btnStartCounter.innerText = 'Pause'
+        if(clearStore() == true){
+
+            let template = pomoTemplate(pomoCounter ?? traitsPomo);
+            counterContainer.innerHTML = template.template;
+            
+            window.setInterval(()=>{
+                const pomoCounter = localStorage.getItem('pomoCounter'),
+                    pomo = localStorage.getItem('pomo'),
+                        isRunning = localStorage.getItem('isRunning'),
+                            isPaused= localStorage.getItem('isPaused');
+    
+                if (pomoCounter < pomo ){
+                    if (isRunning == 1 & isPaused ==-0){
+                        btnStartCounter.innerText = 'Pause'
+                    }
+    
+                    if(isRunning == 0 && isPaused == 1){
+                        btnStartCounter.innerText = 'Continue'
+                    }
                 }
+            }, 5);
 
-
-                if(isRunning == 0 && isPaused == 1){
-                    btnStartCounter.innerText = 'Continue'
-                }
-            }
-        }, 50);
+        }
 
         btnStartCounter.addEventListener('click', ()=>{
-
-            const opt = btnStartCounter.getAttribute('value');
-
-            switch (opt) {
-                case '0':
-
-                    localStorage.setItem('isRunning', 1);
-                    pomoTimer(parseInt(traitsPomo) * 60)
-                    btnStartCounter.setAttribute('value', 1);
-
-                    break;
-                case '1':
-
-                    localStorage.setItem('isPaused', 1);
-                    localStorage.setItem('isRunning', 0);
-                    btnStartCounter.setAttribute('value', 2);
-                    stop(50);
-
-                    break;
-                case '2':
-
-                    localStorage.setItem('isRunning', 1);
-                    localStorage.setItem('isPaused', 0);
-                    pomoTimer(pomoCarryOn);
-                    btnStartCounter.setAttribute('value', 1);
-
-                    break;
-            }
+            startStop(btnStartCounter.getAttribute('value'))
         });
+
+        btnRestartCounter.addEventListener('click', ()=> {
+            
+            clearStore();
+
+            stop(50);
+
+            setTimeout(()=>{
+                location.reload();
+                pomoTimer(parseInt(traitsPomo) * 60);
+            }, 500)
+        })
     }
 
+    function startStop(opt){
+        switch (opt) {
+            case '0':
 
-    function startStop(){
-    
+                localStorage.setItem('isRunning', 1);
+                pomoTimer(parseInt(traitsPomo) * 60)
+                btnStartCounter.setAttribute('value', 1);
+
+                break;
+            case '1':
+
+                localStorage.setItem('isPaused', 1);
+                localStorage.setItem('isRunning', 0);
+                btnStartCounter.setAttribute('value', 2);
+                stop(50);
+
+                break;
+            case '2':
+                const  pomoCarryOn = localStorage.getItem('pomo-carry-on');
+
+                localStorage.setItem('isRunning', 1);
+                localStorage.setItem('isPaused', 0);
+                btnStartCounter.setAttribute('value', 1);
+
+                pomoTimer(pomoCarryOn);
+                
+                break;
+        }
     }
 
+    function clearStore(){
+
+        localStorage.setItem('isRunning', 0);
+        localStorage.setItem('isPaused', 0);
+        localStorage.removeItem('pomoCounter');
+        localStorage.removeItem('pomo-carry-on');
+
+        if (localStorage.getItem('pomoCounter') == null && localStorage.getItem('pomo-carry-on') == null){
+            return true
+        }
+    }
 
 })();
 
