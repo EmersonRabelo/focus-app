@@ -31,7 +31,7 @@ body {
 
   border-right: 1px solid var(--violet);
   border-left: 1px solid var(--violet);
-  
+
   border-bottom: none;
   border-top: none;
 
@@ -179,7 +179,7 @@ main {
   text-transform: uppercase;
 
   transition: 0.8s;
-  cursor: pointer;
+  /* cursor: pointer; */
 
 }
 
@@ -198,7 +198,7 @@ main {
   text-transform: uppercase;
 
   transition: 0.8s;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .btn-pause:active {
