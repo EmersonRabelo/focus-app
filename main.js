@@ -53,15 +53,18 @@ import { config } from '/components/config.js'
         });
 
         btnRestartCounter.addEventListener('click', ()=> {
-            
-            clearStore();
+            const isRunning = localStorage.getItem('isRunning');
+            const isPaused= localStorage.getItem('isPaused');
+            if (isRunning == 1 || isPaused == 1){
+                clearStore();
 
-            stop(50);
-
-            setTimeout(()=>{
-                location.reload();
-                pomoTimer(parseInt(traitsPomo) * 60);
-            }, 500)
+                stop(50);
+    
+                setTimeout(()=>{
+                    location.reload();
+                    pomoTimer(parseInt(traitsPomo) * 60);
+                }, 500)
+            }
         })
     }
 
