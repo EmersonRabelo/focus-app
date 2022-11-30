@@ -7,7 +7,7 @@ import { config } from '/components/config.js'
 
 // core application
 (()=>{
-
+    
     const {traitsPomo} = config(),
         pomoCounter = localStorage.getItem('pomoCounter'),
             pomoCarryOn = localStorage.getItem('pomo-carry-on');
@@ -23,6 +23,8 @@ import { config } from '/components/config.js'
 
 
     window.onload = () => {
+
+        clearStore();
 
         if(clearStore() == true){
 
@@ -44,7 +46,7 @@ import { config } from '/components/config.js'
                         btnStartCounter.innerText = 'Continue'
                     }
                 }
-            }, 5);
+            }, 50);
 
         }
 
@@ -69,11 +71,18 @@ import { config } from '/components/config.js'
     }
 
     function startStop(opt){
+
+        // 0 - Não iniciado
+        // 1 - Rodando
+        // 2 - Pausado
+
         switch (opt) {
             case '0':
 
                 localStorage.setItem('isRunning', 1);
-                pomoTimer(parseInt(traitsPomo) * 60)
+
+                pomoTimer(parseInt(traitsPomo) * 60);
+
                 btnStartCounter.setAttribute('value', 1);
 
                 break;
@@ -81,7 +90,9 @@ import { config } from '/components/config.js'
 
                 localStorage.setItem('isPaused', 1);
                 localStorage.setItem('isRunning', 0);
+
                 btnStartCounter.setAttribute('value', 2);
+
                 stop(50);
 
                 break;
@@ -90,6 +101,7 @@ import { config } from '/components/config.js'
 
                 localStorage.setItem('isRunning', 1);
                 localStorage.setItem('isPaused', 0);
+
                 btnStartCounter.setAttribute('value', 1);
 
                 pomoTimer(pomoCarryOn);
@@ -102,6 +114,7 @@ import { config } from '/components/config.js'
 
         localStorage.setItem('isRunning', 0);
         localStorage.setItem('isPaused', 0);
+        
         localStorage.removeItem('pomoCounter');
         localStorage.removeItem('pomo-carry-on');
 
