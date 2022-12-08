@@ -1,4 +1,6 @@
-import './style.css'
+import './public/javascript/background.js';
+import './public/css/background.css';
+import './style.css';
 
 import { pomoTemplate } from './components/pomo-counter-component/template.js'
 import { pomoTimer, stop }  from '/components/pomo-counter-component/timer.js'
