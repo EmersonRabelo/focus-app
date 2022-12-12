@@ -67,6 +67,7 @@ import { config } from '/components/config.js'
                 setTimeout(()=>{
                     location.reload();
                     pomoTimer(parseInt(traitsPomo) * 60);
+                    location.reload();
                 }, 500)
             }
         })
@@ -119,6 +120,7 @@ import { config } from '/components/config.js'
         
         localStorage.removeItem('pomoCounter');
         localStorage.removeItem('pomo-carry-on');
+        localStorage.removeItem('bar-progress');
 
         if (localStorage.getItem('pomoCounter') == null && localStorage.getItem('pomo-carry-on') == null){
             return true
