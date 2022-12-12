@@ -5,6 +5,7 @@
   --white-deep: #FFFDFA;
   --font-color: #04D361;
   --font-shadow: #04D361;
+  --bar: #04d36179;
   --violet: #8056E2;
 }
 
@@ -20,7 +21,7 @@ body {
   justify-content: center;
 
   margin-top: 100px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .btn-opt {
@@ -103,7 +104,7 @@ main {
 .counter {
   height: 100px;
   width: 400px;
-  margin-bottom: 60px;
+  margin-bottom: 10px;
 
   display: flex;
   flex-direction: column;
@@ -113,7 +114,7 @@ main {
 
 .clock {
   font-family: 'Iceland', cursive;
-  font-size: 140px;
+  font-size: 160px;
   color: var(--font-color);
   /* text-shadow: 1px 1px 12px var(--font-shadow); */
 }
@@ -223,4 +224,16 @@ main {
 .btn-restart > svg:hover {
   fill: var(--font-color);
   transition: 0.8s;
+} 
+
+progress {
+-webkit-appearance: none; 
+}
+
+::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+progress::-webkit-progress-value {
+  background-color: var(--bar);
 }
