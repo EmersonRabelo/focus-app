@@ -30,6 +30,7 @@ export function pomoTimer(duration) {
 
         if (--timer < 0) {
             timer = duration;
+            localStorage.setItem('isRunning', 0);
             stop();
         }
     }, 1000);
