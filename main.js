@@ -2,17 +2,21 @@ import './public/javascript/background.js';
 import './public/css/background.css';
 import './style.css';
 
-import { pomoTemplate } from './components/pomo-counter-component/template.js'
-import { pomoTimer, stop }  from '/components/pomo-counter-component/timer.js'
+import { pomoTemplate } from './components/pomo-counter-component/template.js';
+import { pomoTimer, stop }  from '/components/pomo-counter-component/timer.js';
+
+import { shortTemplate } from '/components/short-counter-component/template.js';
+import { shortTimer } from '/components/short-counter-component/timer.js';
 
 import { config } from '/components/config.js'
 
 // core application
 (()=>{
     
-    const {traitsPomo} = config(),
+    const {traitsPomo, traitShort} = config(),
         pomoCounter = localStorage.getItem('pomoCounter'),
-            pomoCarryOn = localStorage.getItem('pomo-carry-on');
+            pomoCarryOn = localStorage.getItem('pomo-carry-on'),
+                shortCounter = localStorage.getItem('shortCounter')
     
     const counterContainer = document.getElementById('counter-container');
     const btnStartCounter = document.getElementById('btn-start');
@@ -38,9 +42,12 @@ import { config } from '/components/config.js'
                     pomo = localStorage.getItem('pomo'),
                         isRunning = localStorage.getItem('isRunning'),
                             isPaused= localStorage.getItem('isPaused');
-    
+                if (isRunning == 0 & isPaused == 0){
+                    btnStartCounter.innerText = 'Start'
+                }
+
                 if (pomoCounter < pomo ){
-                    if (isRunning == 1 & isPaused ==-0){
+                    if (isRunning == 1 & isPaused == 0){
                         btnStartCounter.innerText = 'Pause'
                     }
     
@@ -50,7 +57,19 @@ import { config } from '/components/config.js'
                 }
             }, 50);
 
-        }
+        };
+
+        btnShort.addEventListener('click', (e) =>{
+            e.preventDefault();
+
+            let template = shortTemplate(shortCounter ?? traitShort);
+            counterContainer.innerHTML = template.template;
+
+            btnStartCounter.addEventListener('click', ()=>{
+
+            })
+
+        })
 
         btnStartCounter.addEventListener('click', ()=>{
             startStop(btnStartCounter.getAttribute('value'))
@@ -65,7 +84,6 @@ import { config } from '/components/config.js'
                 stop(50);
     
                 setTimeout(()=>{
-                    location.reload();
                     pomoTimer(parseInt(traitsPomo) * 60);
                     location.reload();
                 }, 500)
